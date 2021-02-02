@@ -1,7 +1,7 @@
 # Личный проект «Шесть городов» [![Build status][travis-image]][travis-url]
 
 * Студент: [Евгений Ворона](https://up.htmlacademy.ru/react/6/user/167715).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Лялихов](https://htmlacademy.ru/profile/id983003).
 
 ---
 
