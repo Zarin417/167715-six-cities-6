@@ -1,0 +1,662 @@
+.not-found-container {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: white;
+  color: black;
+  font-family: arial, sans-serif;
+  font-size: 20px;
+  overflow: hidden;
+}
+
+.content {
+  box-sizing: border-box;
+  position: relative;
+  width: 600px;
+  max-width: 100%;
+  margin: 20px;
+  background: white;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: -10px 10px 67px -12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: apparition 0.8s 1.2s cubic-bezier(0.39, 0.575, 0.28, 0.995) forwards;
+}
+.content p {
+  box-sizing: border-box;
+  font-size: 26px;
+  margin-top: 0;
+  margin-bottom: 12px;
+  letter-spacing: 2px;
+  color: #595959;
+}
+.content p:last-child {
+  margin-bottom: 0;
+}
+
+.content button {
+  display: inline-block;
+  margin-top: 40px;
+  padding: 10px 20px;
+  border: 3px solid #595959;
+  background: transparent;
+  font-size: 20px;
+  color: #595959;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+
+.particle {
+  box-sizing: border-box;
+  position: absolute;
+  display: block;
+  pointer-events: none;
+}
+.particle:nth-child(1) {
+  top: 60.9336609337%;
+  left: 1.9723865878%;
+  font-size: 14px;
+  filter: blur(0.02px);
+  animation: 26s floatReverse2 infinite;
+}
+.particle:nth-child(2) {
+  top: 48.6618004866%;
+  left: 79.2563600783%;
+  font-size: 22px;
+  filter: blur(0.04px);
+  animation: 32s floatReverse2 infinite;
+}
+.particle:nth-child(3) {
+  top: 86.9352869353%;
+  left: 55.9371933268%;
+  font-size: 19px;
+  filter: blur(0.06px);
+  animation: 37s float infinite;
+}
+.particle:nth-child(4) {
+  top: 71.3064713065%;
+  left: 21.5897939156%;
+  font-size: 19px;
+  filter: blur(0.08px);
+  animation: 22s floatReverse2 infinite;
+}
+.particle:nth-child(5) {
+  top: 47.1744471744%;
+  left: 28.5996055227%;
+  font-size: 14px;
+  filter: blur(0.1px);
+  animation: 39s floatReverse infinite;
+}
+.particle:nth-child(6) {
+  top: 63.7254901961%;
+  left: 29.5275590551%;
+  font-size: 16px;
+  filter: blur(0.12px);
+  animation: 30s float2 infinite;
+}
+.particle:nth-child(7) {
+  top: 66.0912453761%;
+  left: 94.9554896142%;
+  font-size: 11px;
+  filter: blur(0.14px);
+  animation: 23s float infinite;
+}
+.particle:nth-child(8) {
+  top: 7.8914919852%;
+  left: 86.0534124629%;
+  font-size: 11px;
+  filter: blur(0.16px);
+  animation: 23s float2 infinite;
+}
+.particle:nth-child(9) {
+  top: 24.1254523522%;
+  left: 14.5772594752%;
+  font-size: 29px;
+  filter: blur(0.18px);
+  animation: 31s floatReverse infinite;
+}
+.particle:nth-child(10) {
+  top: 44.3908323281%;
+  left: 56.3654033042%;
+  font-size: 29px;
+  filter: blur(0.2px);
+  animation: 21s floatReverse2 infinite;
+}
+.particle:nth-child(11) {
+  top: 50.4854368932%;
+  left: 41.9921875%;
+  font-size: 24px;
+  filter: blur(0.22px);
+  animation: 23s float infinite;
+}
+.particle:nth-child(12) {
+  top: 20.487804878%;
+  left: 69.6078431373%;
+  font-size: 20px;
+  filter: blur(0.24px);
+  animation: 24s float infinite;
+}
+.particle:nth-child(13) {
+  top: 98.1595092025%;
+  left: 93.5960591133%;
+  font-size: 15px;
+  filter: blur(0.26px);
+  animation: 21s floatReverse2 infinite;
+}
+.particle:nth-child(14) {
+  top: 31.8072289157%;
+  left: 71.8446601942%;
+  font-size: 30px;
+  filter: blur(0.28px);
+  animation: 37s floatReverse infinite;
+}
+.particle:nth-child(15) {
+  top: 50.2415458937%;
+  left: 62.2568093385%;
+  font-size: 28px;
+  filter: blur(0.3px);
+  animation: 33s float infinite;
+}
+.particle:nth-child(16) {
+  top: 22.3572296476%;
+  left: 35.1906158358%;
+  font-size: 23px;
+  filter: blur(0.32px);
+  animation: 33s float2 infinite;
+}
+.particle:nth-child(17) {
+  top: 60.3406326034%;
+  left: 69.4716242661%;
+  font-size: 22px;
+  filter: blur(0.34px);
+  animation: 39s floatReverse2 infinite;
+}
+.particle:nth-child(18) {
+  top: 90.5109489051%;
+  left: 85.1272015656%;
+  font-size: 22px;
+  filter: blur(0.36px);
+  animation: 28s floatReverse2 infinite;
+}
+.particle:nth-child(19) {
+  top: 1.9323671498%;
+  left: 3.8910505837%;
+  font-size: 28px;
+  filter: blur(0.38px);
+  animation: 24s float2 infinite;
+}
+.particle:nth-child(20) {
+  top: 0.9661835749%;
+  left: 43.7743190661%;
+  font-size: 28px;
+  filter: blur(0.4px);
+  animation: 23s floatReverse2 infinite;
+}
+.particle:nth-child(21) {
+  top: 26.0869565217%;
+  left: 80.7392996109%;
+  font-size: 28px;
+  filter: blur(0.42px);
+  animation: 30s float infinite;
+}
+.particle:nth-child(22) {
+  top: 48.8997555012%;
+  left: 17.6817288802%;
+  font-size: 18px;
+  filter: blur(0.44px);
+  animation: 32s float2 infinite;
+}
+.particle:nth-child(23) {
+  top: 13.6253041363%;
+  left: 33.2681017613%;
+  font-size: 22px;
+  filter: blur(0.46px);
+  animation: 21s floatReverse2 infinite;
+}
+.particle:nth-child(24) {
+  top: 27.3838630807%;
+  left: 94.3025540275%;
+  font-size: 18px;
+  filter: blur(0.48px);
+  animation: 40s float2 infinite;
+}
+.particle:nth-child(25) {
+  top: 71.0462287105%;
+  left: 34.2465753425%;
+  font-size: 22px;
+  filter: blur(0.5px);
+  animation: 30s floatReverse infinite;
+}
+.particle:nth-child(26) {
+  top: 74.8481166464%;
+  left: 36.1681329423%;
+  font-size: 23px;
+  filter: blur(0.52px);
+  animation: 34s floatReverse infinite;
+}
+.particle:nth-child(27) {
+  top: 89.756097561%;
+  left: 86.2745098039%;
+  font-size: 20px;
+  filter: blur(0.54px);
+  animation: 39s float2 infinite;
+}
+.particle:nth-child(28) {
+  top: 49.6350364964%;
+  left: 67.5146771037%;
+  font-size: 22px;
+  filter: blur(0.56px);
+  animation: 25s float2 infinite;
+}
+.particle:nth-child(29) {
+  top: 12.7921279213%;
+  left: 86.8706811451%;
+  font-size: 13px;
+  filter: blur(0.58px);
+  animation: 40s float2 infinite;
+}
+.particle:nth-child(30) {
+  top: 16.5048543689%;
+  left: 46.875%;
+  font-size: 24px;
+  filter: blur(0.6px);
+  animation: 24s floatReverse infinite;
+}
+.particle:nth-child(31) {
+  top: 15.552855407%;
+  left: 66.4711632454%;
+  font-size: 23px;
+  filter: blur(0.62px);
+  animation: 36s float2 infinite;
+}
+.particle:nth-child(32) {
+  top: 64.3902439024%;
+  left: 87.2549019608%;
+  font-size: 20px;
+  filter: blur(0.64px);
+  animation: 28s floatReverse2 infinite;
+}
+.particle:nth-child(33) {
+  top: 4.8780487805%;
+  left: 17.6470588235%;
+  font-size: 20px;
+  filter: blur(0.66px);
+  animation: 32s float infinite;
+}
+.particle:nth-child(34) {
+  top: 30.1703163017%;
+  left: 67.5146771037%;
+  font-size: 22px;
+  filter: blur(0.68px);
+  animation: 25s floatReverse2 infinite;
+}
+.particle:nth-child(35) {
+  top: 33.4152334152%;
+  left: 58.1854043393%;
+  font-size: 14px;
+  filter: blur(0.7px);
+  animation: 36s floatReverse2 infinite;
+}
+.particle:nth-child(36) {
+  top: 85.6088560886%;
+  left: 69.1016781836%;
+  font-size: 13px;
+  filter: blur(0.72px);
+  animation: 21s floatReverse infinite;
+}
+.particle:nth-child(37) {
+  top: 76.8856447689%;
+  left: 90.0195694716%;
+  font-size: 22px;
+  filter: blur(0.74px);
+  animation: 25s float2 infinite;
+}
+.particle:nth-child(38) {
+  top: 72.7272727273%;
+  left: 23.6686390533%;
+  font-size: 14px;
+  filter: blur(0.76px);
+  animation: 38s float2 infinite;
+}
+.particle:nth-child(39) {
+  top: 96.5853658537%;
+  left: 79.4117647059%;
+  font-size: 20px;
+  filter: blur(0.78px);
+  animation: 28s float infinite;
+}
+.particle:nth-child(40) {
+  top: 3.8976857491%;
+  left: 62.6836434868%;
+  font-size: 21px;
+  filter: blur(0.8px);
+  animation: 38s float infinite;
+}
+.particle:nth-child(41) {
+  top: 85.2300242131%;
+  left: 85.7699805068%;
+  font-size: 26px;
+  filter: blur(0.82px);
+  animation: 27s floatReverse infinite;
+}
+.particle:nth-child(42) {
+  top: 54.501216545%;
+  left: 35.2250489237%;
+  font-size: 22px;
+  filter: blur(0.84px);
+  animation: 37s float2 infinite;
+}
+.particle:nth-child(43) {
+  top: 65.5256723716%;
+  left: 64.8330058939%;
+  font-size: 18px;
+  filter: blur(0.86px);
+  animation: 30s floatReverse infinite;
+}
+.particle:nth-child(44) {
+  top: 74.4860943168%;
+  left: 55.5014605648%;
+  font-size: 27px;
+  filter: blur(0.88px);
+  animation: 30s floatReverse infinite;
+}
+.particle:nth-child(45) {
+  top: 57.490864799%;
+  left: 83.2517140059%;
+  font-size: 21px;
+  filter: blur(0.9px);
+  animation: 34s floatReverse2 infinite;
+}
+.particle:nth-child(46) {
+  top: 29.5930949445%;
+  left: 42.5321463897%;
+  font-size: 11px;
+  filter: blur(0.92px);
+  animation: 24s float infinite;
+}
+.particle:nth-child(47) {
+  top: 21.568627451%;
+  left: 77.7559055118%;
+  font-size: 16px;
+  filter: blur(0.94px);
+  animation: 24s floatReverse2 infinite;
+}
+.particle:nth-child(48) {
+  top: 68.8484848485%;
+  left: 53.6585365854%;
+  font-size: 25px;
+  filter: blur(0.96px);
+  animation: 29s floatReverse2 infinite;
+}
+.particle:nth-child(49) {
+  top: 78.7363304982%;
+  left: 48.8758553275%;
+  font-size: 23px;
+  filter: blur(0.98px);
+  animation: 26s floatReverse2 infinite;
+}
+.particle:nth-child(50) {
+  top: 38.8821385176%;
+  left: 93.8416422287%;
+  font-size: 23px;
+  filter: blur(1px);
+  animation: 31s floatReverse infinite;
+}
+.particle:nth-child(51) {
+  top: 78.527607362%;
+  left: 93.5960591133%;
+  font-size: 15px;
+  filter: blur(1.02px);
+  animation: 24s float2 infinite;
+}
+.particle:nth-child(52) {
+  top: 73.786407767%;
+  left: 17.578125%;
+  font-size: 24px;
+  filter: blur(1.04px);
+  animation: 38s floatReverse infinite;
+}
+.particle:nth-child(53) {
+  top: 50.3022974607%;
+  left: 68.1596884129%;
+  font-size: 27px;
+  filter: blur(1.06px);
+  animation: 23s floatReverse infinite;
+}
+.particle:nth-child(54) {
+  top: 91.5662650602%;
+  left: 63.1067961165%;
+  font-size: 30px;
+  filter: blur(1.08px);
+  animation: 26s float2 infinite;
+}
+.particle:nth-child(55) {
+  top: 96.3144963145%;
+  left: 41.4201183432%;
+  font-size: 14px;
+  filter: blur(1.1px);
+  animation: 35s float infinite;
+}
+.particle:nth-child(56) {
+  top: 4.8899755501%;
+  left: 15.7170923379%;
+  font-size: 18px;
+  filter: blur(1.12px);
+  animation: 36s float2 infinite;
+}
+.particle:nth-child(57) {
+  top: 21.23039807%;
+  left: 71.9144800777%;
+  font-size: 29px;
+  filter: blur(1.14px);
+  animation: 40s floatReverse2 infinite;
+}
+.particle:nth-child(58) {
+  top: 90.9535452323%;
+  left: 90.373280943%;
+  font-size: 18px;
+  filter: blur(1.16px);
+  animation: 21s floatReverse infinite;
+}
+.particle:nth-child(59) {
+  top: 67.6328502415%;
+  left: 23.3463035019%;
+  font-size: 28px;
+  filter: blur(1.18px);
+  animation: 24s float infinite;
+}
+.particle:nth-child(60) {
+  top: 96.8215158924%;
+  left: 56.974459725%;
+  font-size: 18px;
+  filter: blur(1.2px);
+  animation: 31s float2 infinite;
+}
+.particle:nth-child(61) {
+  top: 9.8039215686%;
+  left: 75.7874015748%;
+  font-size: 16px;
+  filter: blur(1.22px);
+  animation: 23s floatReverse2 infinite;
+}
+.particle:nth-child(62) {
+  top: 27.0531400966%;
+  left: 41.8287937743%;
+  font-size: 28px;
+  filter: blur(1.24px);
+  animation: 31s floatReverse2 infinite;
+}
+.particle:nth-child(63) {
+  top: 17.6687116564%;
+  left: 7.881773399%;
+  font-size: 15px;
+  filter: blur(1.26px);
+  animation: 40s floatReverse2 infinite;
+}
+.particle:nth-child(64) {
+  top: 52.3636363636%;
+  left: 2.9268292683%;
+  font-size: 25px;
+  filter: blur(1.28px);
+  animation: 23s float infinite;
+}
+.particle:nth-child(65) {
+  top: 13.5593220339%;
+  left: 20.4678362573%;
+  font-size: 26px;
+  filter: blur(1.3px);
+  animation: 22s floatReverse2 infinite;
+}
+.particle:nth-child(66) {
+  top: 93.5444579781%;
+  left: 91.0871694417%;
+  font-size: 21px;
+  filter: blur(1.32px);
+  animation: 36s floatReverse infinite;
+}
+.particle:nth-child(67) {
+  top: 32.7710843373%;
+  left: 1.9417475728%;
+  font-size: 30px;
+  filter: blur(1.34px);
+  animation: 34s float2 infinite;
+}
+.particle:nth-child(68) {
+  top: 52.7472527473%;
+  left: 30.4219823356%;
+  font-size: 19px;
+  filter: blur(1.36px);
+  animation: 38s floatReverse infinite;
+}
+.particle:nth-child(69) {
+  top: 22.3300970874%;
+  left: 76.171875%;
+  font-size: 24px;
+  filter: blur(1.38px);
+  animation: 22s floatReverse infinite;
+}
+.particle:nth-child(70) {
+  top: 26.2454434994%;
+  left: 20.5278592375%;
+  font-size: 23px;
+  filter: blur(1.4px);
+  animation: 39s float infinite;
+}
+.particle:nth-child(71) {
+  top: 20.6388206388%;
+  left: 58.1854043393%;
+  font-size: 14px;
+  filter: blur(1.42px);
+  animation: 23s float2 infinite;
+}
+.particle:nth-child(72) {
+  top: 93.6585365854%;
+  left: 19.6078431373%;
+  font-size: 20px;
+  filter: blur(1.44px);
+  animation: 28s floatReverse infinite;
+}
+.particle:nth-child(73) {
+  top: 74.7847478475%;
+  left: 75.0246791708%;
+  font-size: 13px;
+  filter: blur(1.46px);
+  animation: 33s float2 infinite;
+}
+.particle:nth-child(74) {
+  top: 55.3398058252%;
+  left: 86.9140625%;
+  font-size: 24px;
+  filter: blur(1.48px);
+  animation: 23s float2 infinite;
+}
+.particle:nth-child(75) {
+  top: 96.1963190184%;
+  left: 28.5714285714%;
+  font-size: 15px;
+  filter: blur(1.5px);
+  animation: 34s float2 infinite;
+}
+.particle:nth-child(76) {
+  top: 49.6954933009%;
+  left: 15.6709108717%;
+  font-size: 21px;
+  filter: blur(1.52px);
+  animation: 23s floatReverse infinite;
+}
+.particle:nth-child(77) {
+  top: 30.0242130751%;
+  left: 78.9473684211%;
+  font-size: 26px;
+  filter: blur(1.54px);
+  animation: 39s float2 infinite;
+}
+.particle:nth-child(78) {
+  top: 6.8796068796%;
+  left: 40.4339250493%;
+  font-size: 14px;
+  filter: blur(1.56px);
+  animation: 30s floatReverse infinite;
+}
+.particle:nth-child(79) {
+  top: 32.3529411765%;
+  left: 78.7401574803%;
+  font-size: 16px;
+  filter: blur(1.58px);
+  animation: 27s floatReverse infinite;
+}
+.particle:nth-child(80) {
+  top: 54.9397590361%;
+  left: 47.572815534%;
+  font-size: 30px;
+  filter: blur(1.6px);
+  animation: 31s floatReverse2 infinite;
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(180px);
+  }
+}
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-180px);
+  }
+}
+@keyframes float2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(28px);
+  }
+}
+@keyframes floatReverse2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-28px);
+  }
+}
