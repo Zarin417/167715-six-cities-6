@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Card from '../card/card';
 
-const Main = (props) => {
+const MainScreen = (props) => {
   const {cardsAmount} = props;
 
   return (
@@ -12,7 +12,7 @@ const Main = (props) => {
           <div className="header__wrapper">
             <div className="header__left">
               <a className="header__logo-link header__logo-link--active">
-                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width="81" height="41"/>
+                <img className="header__logo" src="img/logo.svg" alt="6 cities logo" width={81} height={41} />
               </a>
             </div>
             <nav className="header__nav">
@@ -82,7 +82,7 @@ const Main = (props) => {
                 <span className="places__sorting-type" tabIndex="0">
                   Popular
                   <svg className="places__sorting-arrow" width="7" height="4">
-                    <use xlinkHref="#icon-arrow-select"></use>
+                    <use xlinkHref="#icon-arrow-select" />
                   </svg>
                 </span>
                 <ul className="places__options places__options--custom places__options--opened">
@@ -98,7 +98,8 @@ const Main = (props) => {
               </div>
             </section>
             <div className="cities__right-section">
-              <section className="cities__map map"></section>
+              <section className="cities__map map">
+              </section>
             </div>
           </div>
         </div>
@@ -107,8 +108,8 @@ const Main = (props) => {
   );
 };
 
-Main.propTypes = {
+MainScreen.propTypes = {
   cardsAmount: PropTypes.number.isRequired
 };
 
-export default Main;
+export default MainScreen;
