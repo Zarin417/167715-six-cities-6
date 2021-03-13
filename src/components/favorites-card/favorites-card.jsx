@@ -1,26 +1,18 @@
 import React from "react";
-import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {ratingToPercents, firstCharUppercase} from "../../utils";
 import {offerValidation} from "../../prop-validation";
+import {ratingToPercents, firstCharUppercase} from "../../utils";
 
-const Card = ({offer, onMouseEnter}) => {
-  const {isFavorite, isPremium, images, price, rating, title, type, id} = offer;
-
+const FavoriteCard = ({offer}) => {
+  const {isFavorite, previewImage, price, rating, title, type, id} = offer;
   return (
-    <article className="cities__place-card place-card" onMouseEnter={() => onMouseEnter(id)}>
-      {isPremium
-        ? <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-        : ``
-      }
-      <div className="cities__image-wrapper place-card__image-wrapper">
+    <article className="favorites__card place-card">
+      <div className="favorites__image-wrapper place-card__image-wrapper">
         <a href="#">
-          <img className="place-card__image" src={images[0]} width={260} height={200} alt={title} />
+          <img className="place-card__image" src={previewImage} width={150} height={110} alt="Place image" />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className="favorites__card-info place-card__info">
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{price} </b>
@@ -34,7 +26,7 @@ const Card = ({offer, onMouseEnter}) => {
             <svg className="place-card__bookmark-icon" width={18} height={19}>
               <use xlinkHref="#icon-bookmark" />
             </svg>
-            <span className="visually-hidden">To bookmarks</span>
+            <span className="visually-hidden">In bookmarks</span>
           </button>
         </div>
         <div className="place-card__rating rating">
@@ -52,9 +44,8 @@ const Card = ({offer, onMouseEnter}) => {
   );
 };
 
-Card.propTypes = {
-  offer: offerValidation,
-  onMouseEnter: PropTypes.func.isRequired
+FavoriteCard.propTypes = {
+  offer: offerValidation
 };
 
-export default Card;
+export default FavoriteCard;

@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Card from '../card/card';
+import React from "react";
+import PropTypes from "prop-types";
+import OffersList from "../offers-list/offers-list";
 
-const MainScreen = (props) => {
-  const {cardsAmount} = props;
-
+const MainScreen = ({offers}) => {
   return (
     <div className="page page--gray page--main">
       <header className="header">
@@ -78,7 +76,7 @@ const MainScreen = (props) => {
               <b className="places__found">312 places to stay in Amsterdam</b>
 
               <form className="places__sorting" action="#" method="get">
-                <span className="places__sorting-caption">Sort by</span>
+                <span className="places__sorting-caption">Sort by </span>
                 <span className="places__sorting-type" tabIndex="0">
                   Popular
                   <svg className="places__sorting-arrow" width="7" height="4">
@@ -93,9 +91,8 @@ const MainScreen = (props) => {
                 </ul>
               </form>
 
-              <div className="cities__places-list places__list tabs__content">
-                {new Array(cardsAmount).fill(undefined).map((card, i) => <Card key={i} card={card}/>)}
-              </div>
+              <OffersList offers={offers} />
+
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
@@ -109,7 +106,7 @@ const MainScreen = (props) => {
 };
 
 MainScreen.propTypes = {
-  cardsAmount: PropTypes.number.isRequired
+  offers: PropTypes.array.isRequired
 };
 
 export default MainScreen;
