@@ -1,13 +1,15 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
-import {offerValidation} from "../../prop-validation";
 import OfferReviewsItem from "../offer-reviews-item/offer-reviews-item";
 import CommentForm from "../comment-form/comment-form";
 
-const OfferScreen = ({offer, reviews}) => {
-  const {bedrooms, goods, host, maxAdults, isFavorite, isPremium, price, rating, title, type, id} = offer;
+const OfferScreen = ({offers, reviews}) => {
+  const {id} = useParams();
+  const offer = offers.find((offersItem) => offersItem.id === parseFloat(id));
+  const comments = reviews.filter((reviewsItem) => reviewsItem.id === parseFloat(id));
+  const {bedrooms, goods, host, maxAdults, isFavorite, isPremium, price, rating, title, type} = offer;
 
   return (
     <div className="page">
@@ -138,9 +140,9 @@ const OfferScreen = ({offer, reviews}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{comments.length}</span></h2>
                 <ul className="reviews__list">
-                  {reviews.map((review) => <OfferReviewsItem key={review.id} review={review} />)}
+                  {comments.map((comment) => <OfferReviewsItem key={comment.id} review={comment} />)}
                 </ul>
                 <CommentForm />
               </section>
@@ -257,7 +259,7 @@ const OfferScreen = ({offer, reviews}) => {
 };
 
 OfferScreen.propTypes = {
-  offer: offerValidation,
+  offers: PropTypes.array.isRequired,
   reviews: PropTypes.array
 };
 

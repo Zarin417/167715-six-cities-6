@@ -22,12 +22,9 @@ const App = ({offers, reviews}) => {
         <Route exact path="/favorites">
           <FavoriteScreen favoriteOffers={favoriteOffers}/>
         </Route>
-        <Route exact path="/offer/:id"
-          render = {({location}) => {
-            const id = parseInt(location.pathname.slice(7), 10);
-            return <OfferScreen offer={offers.find((offer) => offer.id === id)} reviews={reviews.filter((review) => review.id === id)} />;
-          }}
-        />
+        <Route exact path="/offer/:id">
+          <OfferScreen offers={offers} reviews={reviews} />;
+        </Route>
         <Route>
           <NotFoundScreen />
         </Route>
