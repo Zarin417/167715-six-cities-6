@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import offerProp from "../offer/offer.prop";
 import OffersList from "../offers-list/offers-list";
+import Map from "../map/map";
 
 const MainScreen = ({offers}) => {
   return (
@@ -96,6 +98,7 @@ const MainScreen = ({offers}) => {
             </section>
             <div className="cities__right-section">
               <section className="cities__map map">
+                <Map offers={offers} location={offers[0].location}/>
               </section>
             </div>
           </div>
@@ -106,7 +109,7 @@ const MainScreen = ({offers}) => {
 };
 
 MainScreen.propTypes = {
-  offers: PropTypes.array.isRequired
+  offers: PropTypes.arrayOf(offerProp).isRequired
 };
 
 export default MainScreen;

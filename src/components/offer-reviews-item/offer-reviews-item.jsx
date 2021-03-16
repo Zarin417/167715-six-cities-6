@@ -1,6 +1,6 @@
 import React from "react";
 import dayjs from "dayjs";
-import {reviewValidation} from "../../prop-validation";
+import reviewProp from "./offer-reviews-item.prop";
 import {ratingToPercents} from "../../utils";
 
 const OfferReviewsItem = ({review}) => {
@@ -33,7 +33,7 @@ const OfferReviewsItem = ({review}) => {
 };
 
 OfferReviewsItem.propTypes = {
-  review: reviewValidation
+  review: reviewProp
 };
 
 export default OfferReviewsItem;

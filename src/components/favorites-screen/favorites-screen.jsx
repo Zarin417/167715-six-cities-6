@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import offerProp from "../offer/offer.prop";
 import FavoritesLocation from "../favorites-location/favorite-location";
 import {Link} from "react-router-dom";
 import {CITIES} from "../../const";
@@ -55,7 +56,7 @@ const FavoriteScreen = ({favoriteOffers}) => {
 };
 
 FavoriteScreen.propTypes = {
-  favoriteOffers: PropTypes.array.isRequired
+  favoriteOffers: PropTypes.arrayOf(offerProp).isRequired
 };
 
 export default FavoriteScreen;

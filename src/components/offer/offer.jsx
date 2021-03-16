@@ -2,9 +2,9 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
-import {offerValidation} from "../../prop-validation";
+import offerProp from "./offer.prop";
 
-const Card = ({offer, onMouseEnter}) => {
+const Offer = ({offer, onMouseEnter}) => {
   const {isFavorite, isPremium, images, price, rating, title, type, id} = offer;
 
   return (
@@ -52,9 +52,9 @@ const Card = ({offer, onMouseEnter}) => {
   );
 };
 
-Card.propTypes = {
-  offer: offerValidation,
+Offer.propTypes = {
+  offer: offerProp,
   onMouseEnter: PropTypes.func.isRequired
 };
 
-export default Card;
+export default Offer;
