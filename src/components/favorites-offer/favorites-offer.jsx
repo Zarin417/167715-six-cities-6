@@ -1,6 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import {offerValidation} from "../../prop-validation";
+import offerProp from "../offer/offer.prop";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
 
 const FavoriteCard = ({offer}) => {
@@ -45,7 +45,7 @@ const FavoriteCard = ({offer}) => {
 };
 
 FavoriteCard.propTypes = {
-  offer: offerValidation
+  offer: offerProp
 };
 
 export default FavoriteCard;

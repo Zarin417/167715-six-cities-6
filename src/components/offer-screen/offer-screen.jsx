@@ -1,5 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
+import offerProp from "../offer/offer.prop";
+import reviewProp from "../offer-reviews-item/offer-reviews-item.prop";
 import {Link, useParams} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
 import OfferReviewsItem from "../offer-reviews-item/offer-reviews-item";
@@ -259,8 +261,8 @@ const OfferScreen = ({offers, reviews}) => {
 };
 
 OfferScreen.propTypes = {
-  offers: PropTypes.array.isRequired,
-  reviews: PropTypes.array
+  offers: PropTypes.arrayOf(offerProp).isRequired,
+  reviews: PropTypes.arrayOf(reviewProp)
 };
 
 export default OfferScreen;

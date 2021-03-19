@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-export const offerValidation = PropTypes.shape({
+export default PropTypes.shape({
   bedrooms: PropTypes.number.isRequired,
   city: PropTypes.shape({
     location: PropTypes.objectOf(PropTypes.number).isRequired,
@@ -25,17 +25,4 @@ export const offerValidation = PropTypes.shape({
   rating: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
-}).isRequired;
-
-export const reviewValidation = PropTypes.shape({
-  comment: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  id: PropTypes.number.isRequired,
-  rating: PropTypes.number.isRequired,
-  user: PropTypes.shape({
-    avatarUrl: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    isPro: PropTypes.bool.isRequired,
-    name: PropTypes.string.isRequired
-  }).isRequired
 }).isRequired;
