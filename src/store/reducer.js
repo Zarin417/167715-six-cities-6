@@ -1,8 +1,9 @@
 import {ActionType} from "./action";
+import {CITIES} from "../const";
 import offers from "../mocks/offers";
 
 const initialState = {
-  currentCity: `Paris`,
+  currentCity: CITIES[0],
   offers
 };
 

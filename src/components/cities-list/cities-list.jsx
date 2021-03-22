@@ -3,28 +3,12 @@ import {connect} from "react-redux";
 import {ActionCreator} from "../../store/action";
 import PropTypes from "prop-types";
 import {CITIES} from "../../const";
+import City from "../city/city";
 
 const CitiesList = ({currentCity, onChangeCity}) => {
-  const handleCityClick = (evt) => {
-    evt.preventDefault();
-    onChangeCity(evt.target.innerText);
-  };
-
   return (
     <ul className="locations__list tabs__list">
-      {CITIES.map((city) => {
-        return (
-          <li key={city} className="locations__item">
-            <a className={
-              currentCity === city
-                ? `locations__item-link tabs__item tabs__item--active`
-                : `locations__item-link tabs__item`
-            } href="#" onClick={handleCityClick} >
-              <span>{city}</span>
-            </a>
-          </li>
-        );
-      })}
+      {CITIES.map((city) => <City key={city} city={city} isActive={currentCity === city} onChangeCity={onChangeCity} />)}
     </ul>
   );
 };

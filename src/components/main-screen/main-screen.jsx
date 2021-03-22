@@ -14,11 +14,7 @@ const MainScreen = ({offers, currentCity}) => {
     <div className="page page--gray page--main">
       <Header />
 
-      <main className={
-        offers.length !== 0
-          ? `page__main page__main--index`
-          : `page__main page__main--index page__main--index-empty`
-      }>
+      <main className={`page__main page__main--index ${offers.length === 0 && `page__main--index-empty`}`}>
         <h1 className="visually-hidden">Cities</h1>
 
         <div className="tabs">
@@ -28,8 +24,8 @@ const MainScreen = ({offers, currentCity}) => {
         </div>
 
         <div className="cities">
-          {offers.length !== 0
-            ? <div className="cities__places-container container">
+          {offers.length !== 0 ? (
+            <div className="cities__places-container container">
               <section className="cities__places places">
                 <h2 className="visually-hidden">Places</h2>
 
@@ -38,9 +34,9 @@ const MainScreen = ({offers, currentCity}) => {
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by </span>
                   <span className="places__sorting-type" tabIndex="0">
-                    Popular
+                  Popular
                     <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select"/>
+                      <use xlinkHref="#icon-arrow-select" />
                     </svg>
                   </span>
                   <ul className="places__options places__options--custom places__options--opened">
@@ -60,7 +56,9 @@ const MainScreen = ({offers, currentCity}) => {
                 </section>
               </div>
             </div>
-            : <MainEmpty currentCity={currentCity} />
+          ) : (
+            <MainEmpty currentCity={currentCity} />
+          )
           }
         </div>
       </main>

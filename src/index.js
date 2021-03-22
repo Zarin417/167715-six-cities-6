@@ -16,7 +16,7 @@ const store = createStore(
 
 ReactDOM.render(
     <Provider store={store}>
-      <App offers={offers} reviews ={reviews} />
+      <App offers={offers} reviews={reviews} />
     </Provider>,
     root
 );
