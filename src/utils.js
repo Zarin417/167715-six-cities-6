@@ -5,3 +5,7 @@ export const ratingToPercents = (rating) => {
 export const firstCharUppercase = (word) => {
   return word[0].toUpperCase() + word.slice(1);
 };
+
+export const getOffersByCity = (allOffers, currentCity) => {
+  return allOffers.filter((offer) => offer.city.name === currentCity);
+};

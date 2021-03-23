@@ -14,7 +14,7 @@ const FavoritesLocation = ({city, offers}) => {
         </div>
       </div>
       <div className="favorites__places">
-        {offers.map((offer) => <FavoriteOffer key ={offer.id} offer={offer} />)}
+        {offers.map((offer) => <FavoriteOffer key={offer.id} offer={offer} />)}
       </div>
     </li>
   );
