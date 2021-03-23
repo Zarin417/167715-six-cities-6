@@ -34,7 +34,7 @@ const MainScreen = ({offers, currentCity}) => {
                 <form className="places__sorting" action="#" method="get">
                   <span className="places__sorting-caption">Sort by </span>
                   <span className="places__sorting-type" tabIndex="0">
-                  Popular
+                    Popular
                     <svg className="places__sorting-arrow" width="7" height="4">
                       <use xlinkHref="#icon-arrow-select" />
                     </svg>
@@ -58,8 +58,7 @@ const MainScreen = ({offers, currentCity}) => {
             </div>
           ) : (
             <MainEmpty currentCity={currentCity} />
-          )
-          }
+          )}
         </div>
       </main>
     </div>
