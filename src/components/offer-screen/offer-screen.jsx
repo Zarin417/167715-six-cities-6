@@ -1,18 +1,18 @@
 import React from "react";
 import PropTypes from "prop-types";
 import offerProp from "../offer/offer.prop";
-import reviewProp from "../offer-reviews-item/offer-reviews-item.prop";
+import reviewProp from "../reviews-item/reviews-item.prop";
 import {useParams} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
-import OfferReviewsItem from "../offer-reviews-item/offer-reviews-item";
 import CommentForm from "../comment-form/comment-form";
 import Header from "../header/header";
+import ReviewsList from "../reviews-list/reviews-list";
+import OfferGallery from "../offer-gallery/offer-gallery";
 
 const OfferScreen = ({offers, reviews}) => {
   const {id} = useParams();
   const offer = offers.find((offersItem) => offersItem.id === parseFloat(id));
-  const comments = reviews.filter((reviewsItem) => reviewsItem.id === parseFloat(id));
-  const {bedrooms, goods, host, maxAdults, isFavorite, isPremium, price, rating, title, type} = offer;
+  const {bedrooms, goods, host, images, maxAdults, isFavorite, isPremium, price, rating, title, type} = offer;
 
   return (
     <div className="page">
@@ -21,26 +21,7 @@ const OfferScreen = ({offers, reviews}) => {
       <main className="page__main page__main--property">
         <section className="property">
           <div className="property__gallery-container container">
-            <div className="property__gallery">
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/room.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-02.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-03.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/studio-01.jpg" alt="Photo studio" />
-              </div>
-              <div className="property__image-wrapper">
-                <img className="property__image" src="img/apartment-01.jpg" alt="Photo studio" />
-              </div>
-            </div>
+            <OfferGallery offerImages={images} type={type} />
           </div>
           <div className="property__container container">
             <div className="property__wrapper">
@@ -114,10 +95,8 @@ const OfferScreen = ({offers, reviews}) => {
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{comments.length}</span></h2>
-                <ul className="reviews__list">
-                  {comments.map((comment) => <OfferReviewsItem key={comment.id} review={comment} />)}
-                </ul>
+                <h2 className="reviews__title">Reviews &middot; <span className="reviews__amount">{reviews.length}</span></h2>
+                <ReviewsList reviews={reviews} />
                 <CommentForm />
               </section>
             </div>

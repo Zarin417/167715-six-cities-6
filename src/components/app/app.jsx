@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import {Switch, Route, BrowserRouter} from "react-router-dom";
 import offerProp from "../offer/offer.prop";
-import reviewProp from "../offer-reviews-item/offer-reviews-item.prop";
+import reviewProp from "../reviews-item/reviews-item.prop";
 import MainScreen from "../main-screen/main-screen";
 import LoginScreen from "../login-screen/login-screen";
 import FavoriteScreen from "../favorites-screen/favorites-screen";
