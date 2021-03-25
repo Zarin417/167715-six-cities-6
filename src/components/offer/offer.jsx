@@ -1,20 +1,29 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
 import offerProp from "./offer.prop";
 
-const Offer = ({offer, onMouseEnter}) => {
+const Offer = ({offer}) => {
   const {isFavorite, isPremium, images, price, rating, title, type, id} = offer;
 
+  // eslint-disable-next-line no-unused-vars
+  const [activeCard, setActiveCard] = useState(null);
+
+  const handleOfferHover = () => {
+    setActiveCard(id);
+  };
+
+  const handleOfferLeave = () => {
+    setActiveCard(null);
+  };
+
   return (
-    <article className="cities__place-card place-card" onMouseEnter={() => onMouseEnter(id)}>
-      {isPremium
-        ? <div className="place-card__mark">
+    <article className="cities__place-card place-card" onMouseEnter={handleOfferHover} onMouseLeave={handleOfferLeave}>
+      {isPremium && (
+        <div className="place-card__mark">
           <span>Premium</span>
         </div>
-        : ``
-      }
+      )}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
           <img className="place-card__image" src={images[0]} width={260} height={200} alt={title} />
@@ -49,8 +58,7 @@ const Offer = ({offer, onMouseEnter}) => {
 };
 
 Offer.propTypes = {
-  offer: offerProp,
-  onMouseEnter: PropTypes.func.isRequired
+  offer: offerProp
 };
 
 export default Offer;

@@ -8,6 +8,7 @@ import CommentForm from "../comment-form/comment-form";
 import Header from "../header/header";
 import ReviewsList from "../reviews-list/reviews-list";
 import OfferGallery from "../offer-gallery/offer-gallery";
+import Map from "../map/map";
 
 const OfferScreen = ({offers, reviews}) => {
   const {id} = useParams();
@@ -102,6 +103,7 @@ const OfferScreen = ({offers, reviews}) => {
             </div>
           </div>
           <section className="property__map map">
+            <Map offers={offers} location={offers[0].location} />
           </section>
         </section>
         <div className="container">
