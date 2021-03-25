@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import offerProp from "../offer/offer.prop";
 import reviewProp from "../offer-reviews-item/offer-reviews-item.prop";
-import {Link, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
 import OfferReviewsItem from "../offer-reviews-item/offer-reviews-item";
 import CommentForm from "../comment-form/comment-form";
