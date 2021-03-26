@@ -55,7 +55,8 @@ const Offer = ({offer, cardType}) => {
             src={cardType === OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD ? previewImage : images[0]}
             width={imageWidth}
             height={imageHeight}
-            alt={title} />
+            alt={title}
+          />
         </a>
       </div>
       <div className={`${infoClassName} place-card__info`}>
