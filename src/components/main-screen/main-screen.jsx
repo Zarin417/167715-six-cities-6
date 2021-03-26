@@ -12,7 +12,7 @@ import {getOffersByCity} from "../../utils";
 const MainScreen = ({offers, currentCity}) => {
   return (
     <div className="page page--gray page--main">
-      <Header isMainScreen={true}/>
+      <Header isMainScreen />
 
       <main className={`page__main page__main--index ${offers.length === 0 && `page__main--index-empty`}`}>
         <h1 className="visually-hidden">Cities</h1>

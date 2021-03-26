@@ -50,11 +50,12 @@ const Offer = ({offer, cardType}) => {
       )}
       <div className={`${imageClassName} place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={
-            cardType === OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD
-              ? previewImage
-              : images[0]
-          } width={imageWidth} height={imageHeight} alt={title} />
+          <img
+            className="place-card__image"
+            src={cardType === OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD ? previewImage : images[0]}
+            width={imageWidth}
+            height={imageHeight}
+            alt={title} />
         </a>
       </div>
       <div className={`${infoClassName} place-card__info`}>
