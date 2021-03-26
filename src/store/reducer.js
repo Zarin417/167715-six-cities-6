@@ -1,9 +1,10 @@
 import {ActionType} from "./action";
-import {CITIES} from "../const";
+import {CITIES, SORT_TYPE} from "../const";
 import offers from "../mocks/offers";
 
 const initialState = {
   currentCity: CITIES[0],
+  currentSortType: SORT_TYPE.POPULAR,
   offers
 };
 
@@ -13,6 +14,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         currentCity: action.payload
+      };
+    case ActionType.CHANGE_SORT:
+      return {
+        ...state,
+        currentSortType: action.payload
       };
     default:
       return state;

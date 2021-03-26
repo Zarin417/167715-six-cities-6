@@ -4,8 +4,17 @@ import offerProp from "../offer/offer.prop";
 import leaflet from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-const Map = ({offers, location}) => {
+const Map = ({offers, location, focusedOfferId}) => {
   const mapRef = useRef();
+  const customIcon = leaflet.icon({
+    iconUrl: `img/pin.svg`,
+    iconSize: [27, 39]
+  });
+
+  const activeIcon = leaflet.icon({
+    iconUrl: `img/pin-active.svg`,
+    iconSize: [27, 39]
+  });
 
   useEffect(() =>{
     mapRef.current = leaflet.map(`map`, {
@@ -25,25 +34,20 @@ const Map = ({offers, location}) => {
       .addTo(mapRef.current);
 
     offers.forEach((offer) => {
-      const customIcon = leaflet.icon({
-        iconUrl: `img/pin.svg`,
-        iconSize: [27, 39]
-      });
-
       leaflet
         .marker({
           lat: offer.location.latitude,
           lng: offer.location.longitude
         }, {
-          icon: customIcon
+          icon: ((focusedOfferId === offer.id) ? activeIcon : customIcon)
         })
         .addTo(mapRef.current);
+    }, [focusedOfferId]);
 
-      return () => {
-        mapRef.current.remove();
-      };
-    });
-  }, [location]);
+    return () => {
+      mapRef.current.remove();
+    };
+  });
 
   return (
     <div id="map" style={{height: `100%`}} ref={mapRef} />
@@ -57,7 +61,8 @@ Map.propTypes = {
     longitude: PropTypes.number.isRequired,
     zoom: PropTypes.number.isRequired
   }),
-  offers: PropTypes.arrayOf(offerProp).isRequired
+  offers: PropTypes.arrayOf(offerProp).isRequired,
+  focusedOfferId: PropTypes.number
 };
 
 export default Map;

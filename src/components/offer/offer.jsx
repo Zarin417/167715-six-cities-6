@@ -1,13 +1,11 @@
-import React, {useState} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
 import offerProp from "./offer.prop";
 import {OFFERS_CARD_TYPE} from "../../const";
 
-const Offer = ({offer, cardType}) => {
-  // eslint-disable-next-line no-unused-vars
-  const [activeCard, setActiveCard] = useState(null);
+const Offer = ({offer, cardType, onMouseEnter, onMouseLeave}) => {
   const {isFavorite, isPremium, images, previewImage, price, rating, title, type, id} = offer;
   let cardClassName = ``;
   let imageClassName = ``;
@@ -16,11 +14,7 @@ const Offer = ({offer, cardType}) => {
   let imageHeight = 200;
 
   const handleOfferHover = () => {
-    setActiveCard(id);
-  };
-
-  const handleOfferLeave = () => {
-    setActiveCard(null);
+    onMouseEnter(id);
   };
 
   switch (cardType) {
@@ -42,7 +36,7 @@ const Offer = ({offer, cardType}) => {
   }
 
   return (
-    <article className={`${cardClassName} place-card`} onMouseEnter={handleOfferHover} onMouseLeave={handleOfferLeave}>
+    <article className={`${cardClassName} place-card`} onMouseEnter={handleOfferHover} onMouseLeave={onMouseLeave}>
       {(isPremium && cardType !== OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD) && (
         <div className="place-card__mark">
           <span>Premium</span>
@@ -89,7 +83,9 @@ const Offer = ({offer, cardType}) => {
 
 Offer.propTypes = {
   offer: offerProp,
-  cardType: PropTypes.string.isRequired
+  cardType: PropTypes.string.isRequired,
+  onMouseEnter: PropTypes.func.isRequired,
+  onMouseLeave: PropTypes.func.isRequired
 };
 
 export default Offer;

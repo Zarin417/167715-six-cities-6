@@ -1,15 +1,27 @@
-import React from "react";
+import React, {useState} from "react";
 import {connect} from "react-redux";
 import PropTypes from "prop-types";
 import offerProp from "../offer/offer.prop";
 import Header from "../header/header";
 import OffersList from "../offers-list/offers-list";
 import CitiesList from "../cities-list/cities-list";
+import SortList from "../sort-list/sort-list";
 import MainEmpty from "../main-empty/main-empty";
 import Map from "../map/map";
-import {getOffersByCity} from "../../utils";
+import {getOffersByCity, getOffersBySortType} from "../../utils";
 
-const MainScreen = ({offers, currentCity}) => {
+const MainScreen = ({offers, currentCity, currentSortType}) => {
+  const [focusedOfferId, setFocusedOfferId] = useState(null);
+  const sortedOffers = getOffersBySortType(offers, currentSortType);
+
+  const handleFocusedOffer = (offerId) => {
+    setFocusedOfferId(offerId);
+  };
+
+  const handleUnfocusedOffer = () => {
+    setFocusedOfferId(null);
+  };
+
   return (
     <div className="page page--gray page--main">
       <Header isMainScreen />
@@ -31,28 +43,14 @@ const MainScreen = ({offers, currentCity}) => {
 
                 <b className="places__found">{offers.length} places to stay in {currentCity}</b>
 
-                <form className="places__sorting" action="#" method="get">
-                  <span className="places__sorting-caption">Sort by </span>
-                  <span className="places__sorting-type" tabIndex="0">
-                    Popular
-                    <svg className="places__sorting-arrow" width="7" height="4">
-                      <use xlinkHref="#icon-arrow-select" />
-                    </svg>
-                  </span>
-                  <ul className="places__options places__options--custom places__options--opened">
-                    <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                    <li className="places__option" tabIndex="0">Price: low to high</li>
-                    <li className="places__option" tabIndex="0">Price: high to low</li>
-                    <li className="places__option" tabIndex="0">Top rated first</li>
-                  </ul>
-                </form>
+                <SortList />
 
-                <OffersList offers={offers} />
+                <OffersList offers={sortedOffers} onMouseEnter={handleFocusedOffer} onMouseLeave={handleUnfocusedOffer} />
 
               </section>
               <div className="cities__right-section">
                 <section className="cities__map map">
-                  <Map offers={offers} location={offers[0].location} />
+                  <Map offers={offers} location={offers[0].location} focusedOfferId={focusedOfferId} />
                 </section>
               </div>
             </div>
@@ -67,11 +65,13 @@ const MainScreen = ({offers, currentCity}) => {
 
 MainScreen.propTypes = {
   offers: PropTypes.arrayOf(offerProp).isRequired,
-  currentCity: PropTypes.string.isRequired
+  currentCity: PropTypes.string.isRequired,
+  currentSortType: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
   currentCity: state.currentCity,
+  currentSortType: state.currentSortType,
   offers: getOffersByCity(state.offers, state.currentCity)
 });
 
