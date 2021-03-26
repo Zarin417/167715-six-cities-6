@@ -1,9 +1,9 @@
 import React from "react";
 import dayjs from "dayjs";
-import reviewProp from "./offer-reviews-item.prop";
+import reviewProp from "./reviews-item.prop";
 import {ratingToPercents} from "../../utils";
 
-const OfferReviewsItem = ({review}) => {
+const ReviewsItem = ({review}) => {
   const {comment, date, rating, user} = review;
 
   return (
@@ -32,8 +32,8 @@ const OfferReviewsItem = ({review}) => {
   );
 };
 
-OfferReviewsItem.propTypes = {
+ReviewsItem.propTypes = {
   review: reviewProp
 };
 
-export default OfferReviewsItem;
+export default ReviewsItem;

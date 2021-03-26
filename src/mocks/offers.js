@@ -18,7 +18,7 @@ export default [
       name: `Angelina`
     },
     id: 1,
-    images: [`img/apartment-01.jpg`, `img/apartment-02.jpg`],
+    images: [`img/apartment-01.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`, `img/apartment-01.jpg`, `img/apartment-03.jpg`],
     isFavorite: false,
     isPremium: true,
     location: {
@@ -52,7 +52,7 @@ export default [
       name: `Max`
     },
     id: 2,
-    images: [`img/room.jpg`],
+    images: [`img/room.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/room.jpg`],
     isFavorite: true,
     isPremium: false,
     location: {
@@ -86,7 +86,7 @@ export default [
       name: `Angelina`
     },
     id: 3,
-    images: [`img/apartment-02.jpg`, `img/apartment-03.jpg`],
+    images: [`img/apartment-02.jpg`, `img/apartment-03.jpg`, `img/apartment-02.jpg`, `img/apartment-03.jpg`],
     isFavorite: false,
     isPremium: false,
     location: {

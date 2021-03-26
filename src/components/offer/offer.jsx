@@ -1,26 +1,65 @@
-import React from "react";
+import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
 import {ratingToPercents, firstCharUppercase} from "../../utils";
 import offerProp from "./offer.prop";
+import {OFFERS_CARD_TYPE} from "../../const";
 
-const Offer = ({offer, onMouseEnter}) => {
-  const {isFavorite, isPremium, images, price, rating, title, type, id} = offer;
+const Offer = ({offer, cardType}) => {
+  // eslint-disable-next-line no-unused-vars
+  const [activeCard, setActiveCard] = useState(null);
+  const {isFavorite, isPremium, images, previewImage, price, rating, title, type, id} = offer;
+  let cardClassName = ``;
+  let imageClassName = ``;
+  let infoClassName = ``;
+  let imageWidth = 260;
+  let imageHeight = 200;
+
+  const handleOfferHover = () => {
+    setActiveCard(id);
+  };
+
+  const handleOfferLeave = () => {
+    setActiveCard(null);
+  };
+
+  switch (cardType) {
+    case OFFERS_CARD_TYPE.MAIN_SCREEN_CARD:
+      cardClassName = `cities__place-card`;
+      imageClassName = `cities__image-wrapper`;
+      break;
+    case OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD:
+      cardClassName = `favorites__card`;
+      imageClassName = `favorites__image-wrapper`;
+      infoClassName = `favorites__card-info`;
+      imageWidth = 150;
+      imageHeight = 110;
+      break;
+    case OFFERS_CARD_TYPE.NEAR_OFFER_CARD:
+      cardClassName = `near-places__card`;
+      imageClassName = `near-places__image-wrapper`;
+      break;
+  }
 
   return (
-    <article className="cities__place-card place-card" onMouseEnter={() => onMouseEnter(id)}>
-      {isPremium
-        ? <div className="place-card__mark">
+    <article className={`${cardClassName} place-card`} onMouseEnter={handleOfferHover} onMouseLeave={handleOfferLeave}>
+      {(isPremium && cardType !== OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD) && (
+        <div className="place-card__mark">
           <span>Premium</span>
         </div>
-        : ``
-      }
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      )}
+      <div className={`${imageClassName} place-card__image-wrapper`}>
         <a href="#">
-          <img className="place-card__image" src={images[0]} width={260} height={200} alt={title} />
+          <img
+            className="place-card__image"
+            src={cardType === OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD ? previewImage : images[0]}
+            width={imageWidth}
+            height={imageHeight}
+            alt={title}
+          />
         </a>
       </div>
-      <div className="place-card__info">
+      <div className={`${infoClassName} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">€{price} </b>
@@ -50,7 +89,7 @@ const Offer = ({offer, onMouseEnter}) => {
 
 Offer.propTypes = {
   offer: offerProp,
-  onMouseEnter: PropTypes.func.isRequired
+  cardType: PropTypes.string.isRequired
 };
 
 export default Offer;
