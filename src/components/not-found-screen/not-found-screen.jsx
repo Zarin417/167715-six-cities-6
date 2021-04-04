@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {AppRoute} from "../../const";
 
 const NotFoundScreen = () => {
   return (
@@ -85,10 +86,11 @@ const NotFoundScreen = () => {
       <span className="particle">0</span>
       <span className="particle">0</span>
       <article className="content">
-        <p>Шеф! Все пропало!</p>
-        <p>Ошибка <strong>404</strong>. Ничего не найдено</p>
+        <p>404: Page is not found</p>
         <p>
-          <Link className="backward-btn" to="/">Вернуться назад</Link>
+          <Link className="backward-btn" to={AppRoute.ROOT}>
+            To the main page
+          </Link>
         </p>
       </article>
     </div>

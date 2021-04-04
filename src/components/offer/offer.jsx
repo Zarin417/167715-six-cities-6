@@ -1,70 +1,94 @@
 import React from "react";
 import PropTypes from "prop-types";
 import {Link} from "react-router-dom";
-import {ratingToPercents, firstCharUppercase} from "../../utils";
-import offerProp from "./offer.prop";
-import {OFFERS_CARD_TYPE} from "../../const";
+import FavoriteButton from "../favorite-button/favorite-button";
+import {formatString, ratingToPercents} from "../../utils";
+import {offerProp} from "../../prop-types/offer.prop";
+import {ButtonName, CardName} from '../../const';
 
-const Offer = ({offer, cardType, onMouseEnter, onMouseLeave}) => {
-  const {isFavorite, isPremium, images, previewImage, price, rating, title, type, id} = offer;
-  let cardClassName = ``;
-  let imageClassName = ``;
-  let infoClassName = ``;
-  let imageWidth = 260;
-  let imageHeight = 200;
+const CardSettings = {
+  [CardName.FAVORITES]: {
+    cardClass: `favorites__card`,
+    imgSize: {
+      width: 150,
+      height: 110,
+    },
+    cardInfoClass: `favorites__card-info`,
+    buttonName: ButtonName.FAVORITE
+  },
+  [CardName.CITIES]: {
+    cardClass: `cities__place-card`,
+    imgSize: {
+      width: 260,
+      height: 200,
+    },
+    cardInfoClass: ``,
+    buttonName: ButtonName.PLACE_CARD,
+  },
+  [CardName.NEAR_PLACES]: {
+    cardClass: `near-places__card`,
+    imgSize: {
+      width: 260,
+      height: 200,
+    },
+    cardInfoClass: ``,
+    buttonName: ButtonName.NEAR_PLACE,
+  }
+};
 
-  const handleOfferHover = () => {
-    onMouseEnter(id);
+const Offer = ({place, cardName, onMouseEnter, onMouseLeave}) => {
+  const {title, price, previewImage, type, isFavorite, isPremium, rating} = place;
+
+  const addPremiumMark = () => {
+    return (
+      <div className="place-card__mark">
+        <span>Premium</span>
+      </div>
+    );
   };
 
-  switch (cardType) {
-    case OFFERS_CARD_TYPE.MAIN_SCREEN_CARD:
-      cardClassName = `cities__place-card`;
-      imageClassName = `cities__image-wrapper`;
-      break;
-    case OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD:
-      cardClassName = `favorites__card`;
-      imageClassName = `favorites__image-wrapper`;
-      infoClassName = `favorites__card-info`;
-      imageWidth = 150;
-      imageHeight = 110;
-      break;
-    case OFFERS_CARD_TYPE.NEAR_OFFER_CARD:
-      cardClassName = `near-places__card`;
-      imageClassName = `near-places__image-wrapper`;
-      break;
-  }
-
   return (
-    <article className={`${cardClassName} place-card`} onMouseEnter={handleOfferHover} onMouseLeave={onMouseLeave}>
-      {(isPremium && cardType !== OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD) && (
-        <div className="place-card__mark">
-          <span>Premium</span>
-        </div>
-      )}
-      <div className={`${imageClassName} place-card__image-wrapper`}>
+    <article
+      onMouseEnter={() => {
+        if (onMouseEnter) {
+          onMouseEnter(place);
+        }
+      }}
+
+      onMouseLeave={() => {
+        if (onMouseLeave) {
+          onMouseLeave();
+        }
+      }}
+
+      className={
+        `${CardSettings[cardName].cardClass} place-card`
+      }
+    >
+      {isPremium && addPremiumMark()}
+      <div className={`${cardName}__image-wrapper place-card__image-wrapper`}>
         <a href="#">
           <img
             className="place-card__image"
-            src={cardType === OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD ? previewImage : images[0]}
-            width={imageWidth}
-            height={imageHeight}
-            alt={title}
+            src={previewImage}
+            width={CardSettings[cardName].imgSize.width}
+            height={CardSettings[cardName].imgSize.height}
+            alt="Place image"
           />
         </a>
       </div>
-      <div className={`${infoClassName} place-card__info`}>
+      <div className={`${CardSettings[cardName].cardInfoClass} place-card__info`}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
-            <b className="place-card__price-value">€{price} </b>
-            <span className="place-card__price-text">/&nbsp;night</span>
+            <b className="place-card__price-value">&euro;{price}</b>
+            <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button button ${isFavorite && `place-card__bookmark-button--active`}`} type="button">
-            <svg className="place-card__bookmark-icon" width={18} height={19}>
-              <use xlinkHref="#icon-bookmark" />
-            </svg>
-            <span className="visually-hidden">To bookmarks</span>
-          </button>
+
+          <FavoriteButton
+            isFavorite={isFavorite}
+            buttonName={CardSettings[cardName].buttonName}
+            placeId={place.id}
+          />
         </div>
         <div className="place-card__rating rating">
           <div className="place-card__stars rating__stars">
@@ -73,19 +97,23 @@ const Offer = ({offer, cardType, onMouseEnter, onMouseLeave}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link to={`/offer/${id}`}>{title}</Link>
+          <Link to={`/offer/${place.id}`}>
+            {title}
+          </Link>
         </h2>
-        <p className="place-card__type">{firstCharUppercase(type)}</p>
+        <p className="place-card__type">{formatString(type)}</p>
       </div>
     </article>
   );
 };
 
 Offer.propTypes = {
-  offer: offerProp,
-  cardType: PropTypes.string.isRequired,
-  onMouseEnter: PropTypes.func.isRequired,
-  onMouseLeave: PropTypes.func.isRequired
+  place: PropTypes.shape(offerProp),
+  cardName: PropTypes.oneOf(
+      [CardName.CITIES, CardName.FAVORITES, CardName.NEAR_PLACES]
+  ).isRequired,
+  onMouseEnter: PropTypes.func,
+  onMouseLeave: PropTypes.func,
 };
 
 export default Offer;

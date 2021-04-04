@@ -1,43 +1,63 @@
 import React from "react";
-import PropTypes from "prop-types";
-import {Switch, Route, BrowserRouter} from "react-router-dom";
-import offerProp from "../offer/offer.prop";
-import reviewProp from "../reviews-item/reviews-item.prop";
+import {Route, Switch} from "react-router-dom";
+import {AppRoute} from "../../const";
+import {useDispatch, useSelector} from "react-redux";
+import {checkAuth} from "../../store/api-actions";
 import MainScreen from "../main-screen/main-screen";
 import LoginScreen from "../login-screen/login-screen";
-import FavoriteScreen from "../favorites-screen/favorites-screen";
+import Favorites from "../favorites/favorites";
 import OfferScreen from "../offer-screen/offer-screen";
 import NotFoundScreen from "../not-found-screen/not-found-screen";
+import PrivateRoute from "../private-route/private-route";
+import Loader from "../loader/loader";
+import Popup from "../popup/popup";
 
-const App = ({offers, reviews}) => {
-  const favoriteOffers = offers.filter((offer) => offer.isFavorite);
+
+const App = () => {
+  const {isError} = useSelector((state) => state.OFFER);
+  const {isAuthChecked} = useSelector((state) => state.USER);
+  const dispatch = useDispatch();
+
+  if (!isAuthChecked) {
+    dispatch(checkAuth());
+  }
+
+  if (!isAuthChecked) {
+    return <Loader />;
+  }
 
   return (
-    <BrowserRouter>
+    <>
+      {isError && <Popup />}
       <Switch>
-        <Route exact path="/">
+        <Route path={AppRoute.ROOT} exact>
           <MainScreen />
         </Route>
-        <Route exact path="/login">
+
+        <Route path={AppRoute.LOGIN} exact>
           <LoginScreen />
         </Route>
-        <Route exact path="/favorites">
-          <FavoriteScreen favoriteOffers={favoriteOffers}/>
+
+        <PrivateRoute path={AppRoute.FAVORITES} exact render={() => <Favorites />} />
+
+        <Route path={AppRoute.CITY}>
+          <MainScreen />
         </Route>
-        <Route exact path="/offer/:id">
-          <OfferScreen offers={offers} reviews={reviews} />;
+
+        <Route path={AppRoute.OFFER}>
+          <OfferScreen />
         </Route>
+
+        <Route path={AppRoute.ERROR}>
+          <NotFoundScreen />
+        </Route>
+
         <Route>
           <NotFoundScreen />
         </Route>
       </Switch>
-    </BrowserRouter>
+    </>
   );
-};
-
-App.propTypes = {
-  offers: PropTypes.arrayOf(offerProp).isRequired,
-  reviews: PropTypes.arrayOf(reviewProp).isRequired
 };
 
 export default App;
