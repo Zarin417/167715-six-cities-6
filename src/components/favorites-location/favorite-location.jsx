@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import offerProp from "../offer/offer.prop";
-import {OFFERS_CARD_TYPE} from "../../const";
 import Offer from "../offer/offer";
+import {CardName} from "../../const";
+import {offerProp} from "../../prop-types/offer.prop";
 
-const FavoritesLocation = ({city, offers}) => {
+const FavoritesLocation = ({places, city}) => {
   return (
     <li className="favorites__locations-items">
       <div className="favorites__locations locations locations--current">
@@ -15,15 +15,23 @@ const FavoritesLocation = ({city, offers}) => {
         </div>
       </div>
       <div className="favorites__places">
-        {offers.map((offer) => <Offer key={offer.id} offer={offer} cardType={OFFERS_CARD_TYPE.FAVORITE_SCREEN_CARD} />)}
+        {
+          places.map((place) => {
+            return (
+              <Offer key={place.id} place={place} cardName={CardName.FAVORITES} />
+            );
+          })
+        }
       </div>
     </li>
   );
 };
 
 FavoritesLocation.propTypes = {
+  places: PropTypes.arrayOf(
+      PropTypes.shape(offerProp)
+  ).isRequired,
   city: PropTypes.string.isRequired,
-  offers: PropTypes.arrayOf(offerProp).isRequired
 };
 
 export default FavoritesLocation;

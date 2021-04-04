@@ -1,6 +1,7 @@
 import React from "react";
 import dayjs from "dayjs";
-import reviewProp from "./reviews-item.prop";
+import PropTypes from "prop-types";
+import {reviewProp} from "../../prop-types/review.prop";
 import {ratingToPercents} from "../../utils";
 
 const ReviewsItem = ({review}) => {
@@ -15,6 +16,11 @@ const ReviewsItem = ({review}) => {
         <span className="reviews__user-name">
           {user.name}
         </span>
+        {
+          user.isPro && (
+            <span className="property__user-status">Pro</span>
+          )
+        }
       </div>
       <div className="reviews__info">
         <div className="reviews__rating rating">
@@ -33,7 +39,7 @@ const ReviewsItem = ({review}) => {
 };
 
 ReviewsItem.propTypes = {
-  review: reviewProp
+  review: PropTypes.shape(reviewProp)
 };
 
 export default ReviewsItem;

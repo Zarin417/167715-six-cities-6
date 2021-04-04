@@ -1,22 +1,33 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import {createStore} from "redux";
+import {applyMiddleware, createStore} from "redux";
+import thunk from "redux-thunk";
 import {Provider} from "react-redux";
 import {composeWithDevTools} from "redux-devtools-extension";
 import App from "./components/app/app";
-import offers from "./mocks/offers";
-import reviews from "./mocks/reviews";
-import {reducer} from "./store/reducer";
+import {createAPI} from "./services/api";
+import {rootReducer} from "./store/reducer/root-reducer";
+import {setAuthStatus} from "./store/reducer/user/action";
+import {BrowserRouter} from "react-router-dom";
 
 const root = document.querySelector(`#root`);
+
+export const api = createAPI(
+    () => store.dispatch(setAuthStatus(false))
+);
+
 const store = createStore(
-    reducer,
-    composeWithDevTools()
+    rootReducer,
+    composeWithDevTools(
+        applyMiddleware(thunk.withExtraArgument(api))
+    )
 );
 
 ReactDOM.render(
     <Provider store={store}>
-      <App offers={offers} reviews={reviews} />
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
     </Provider>,
     root
 );

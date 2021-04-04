@@ -1,33 +1,30 @@
 import React from "react";
-import {connect} from "react-redux";
-import {ActionCreator} from "../../store/action";
 import PropTypes from "prop-types";
-import {CITIES} from "../../const";
-import City from "../city/city";
+import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
-const CitiesList = ({currentCity, onChangeCity}) => {
+const CitiesList = ({cities}) => {
+  const {activeCity} = useSelector((state) => state.OFFER);
+
   return (
     <ul className="locations__list tabs__list">
-      {CITIES.map((city) => <City key={city} city={city} isActive={currentCity === city} onChangeCity={onChangeCity} />)}
+      {
+        cities.map((city) => {
+          return (
+            <li key={city} className="locations__item">
+              <Link className={`locations__item-link tabs__item ${(city === activeCity) ? `tabs__item--active` : ``}`} to={`/city/${city}`}>
+                <span>{city}</span>
+              </Link>
+            </li>
+          );
+        })
+      }
     </ul>
   );
 };
 
 CitiesList.propTypes = {
-  currentCity: PropTypes.string.isRequired,
-  onChangeCity: PropTypes.func.isRequired
+  cities: PropTypes.array.isRequired,
 };
 
-const mapStateToProps = (state) => ({
-  currentCity: state.currentCity
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onChangeCity(city) {
-    dispatch(ActionCreator.changeCity(city));
-  }
-});
-
-
-export {CitiesList};
-export default connect(mapStateToProps, mapDispatchToProps)(CitiesList);
+export default CitiesList;

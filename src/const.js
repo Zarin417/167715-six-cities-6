@@ -7,15 +7,44 @@ export const CITIES = [
   `Dusseldorf`
 ];
 
-export const OFFERS_CARD_TYPE = {
-  MAIN_SCREEN_CARD: `MAIN`,
-  FAVORITE_SCREEN_CARD: `FAVORITE`,
-  NEAR_OFFER_CARD: `NEAR`
+export const CardName = {
+  CITIES: `cities`,
+  FAVORITES: `favorites`,
+  NEAR_PLACES: `near-places`,
 };
 
-export const SORT_TYPE = {
-  POPULAR: `Popular`,
-  PRICE_LOW_TO_HIGH: `Price: Low to high`,
-  PRICE_HIGH_TO_LOW: `Price: High to low`,
-  TOP_RATED: `Top rated first`
+export const CardsListName = {
+  NEAR_PLACES_LIST: `near-places__list`,
+  CITIES_PLACES_LIST: `cities__places-list tabs__content`
+};
+
+export const ButtonName = {
+  PROPERTY: `property`,
+  PLACE_CARD: `place-card`,
+  FAVORITE: `favorite`,
+  NEAR_PLACE: `near-place`
+};
+
+export const SortType = {
+  POPULAR: `popular`,
+  PRICE_LOW_TO_HIGH: `price: low to high`,
+  PRICE_HIGH_TO_LOW: `price: high to low`,
+  TOP_RATED: `top rated first`
+};
+
+export const AppRoute = {
+  ROOT: `/`,
+  LOGIN: `/login`,
+  FAVORITES: `/favorites`,
+  CITY: `/city/:city`,
+  OFFER: `/offer/:id`,
+  ERROR: `/error`
+};
+
+export const APIRoute = {
+  HOTELS: `/hotels`,
+  LOGIN: `/login`,
+  LOGOUT: `/logout`,
+  COMMENTS: `/comments`,
+  FAVORITE: `/favorite`,
 };
