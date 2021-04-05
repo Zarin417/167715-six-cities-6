@@ -267,7 +267,7 @@ exports[`Test 'MainScreen' MainScreen should render correctly 1`] = `
                   class="cities__image-wrapper place-card__image-wrapper"
                 >
                   <a
-                    href="#"
+                    href="/offer/11"
                   >
                     <img
                       alt="Place image"
@@ -404,7 +404,7 @@ exports[`Test 'MainScreen' MainScreen should render correctly 1`] = `
                       alt=""
                       class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
                       src="img/pin.svg"
-                      style="margin-left: -15px; margin-top: -15px; width: 30px; height: 30px; left: -5px; top: 159px; z-index: 159;"
+                      style="margin-left: -13.5px; margin-top: -19.5px; width: 27px; height: 39px; left: -5px; top: 159px; z-index: 159;"
                       tabindex="0"
                     />
                   </div>

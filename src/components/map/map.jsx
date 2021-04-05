@@ -51,13 +51,13 @@ const Map = ({places, city, placeInfo}) => {
 
     const icon = leaflet.icon({
       iconUrl: `img/pin.svg`,
-      iconSize: [30, 30]
+      iconSize: [27, 39]
     });
 
 
     const activeIcon = leaflet.icon({
       iconUrl: `img/pin-active.svg`,
-      iconSize: [30, 30]
+      iconSize: [27, 39]
     });
 
 

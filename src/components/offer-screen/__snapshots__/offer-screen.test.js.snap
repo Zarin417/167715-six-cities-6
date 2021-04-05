@@ -480,14 +480,14 @@ exports[`Test 'OfferScreen' OfferScreen should render correctly 1`] = `
                   alt=""
                   class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
                   src="img/pin.svg"
-                  style="margin-left: -15px; margin-top: -15px; width: 30px; height: 30px; left: 12px; top: -204px; z-index: -204;"
+                  style="margin-left: -13.5px; margin-top: -19.5px; width: 27px; height: 39px; left: 12px; top: -204px; z-index: -204;"
                   tabindex="0"
                 />
                 <img
                   alt=""
                   class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
                   src="img/pin-active.svg"
-                  style="margin-left: -15px; margin-top: -15px; width: 30px; height: 30px; left: -5px; top: 159px; z-index: 159;"
+                  style="margin-left: -13.5px; margin-top: -19.5px; width: 27px; height: 39px; left: -5px; top: 159px; z-index: 159;"
                   tabindex="0"
                 />
               </div>
@@ -569,7 +569,7 @@ exports[`Test 'OfferScreen' OfferScreen should render correctly 1`] = `
                 class="near-places__image-wrapper place-card__image-wrapper"
               >
                 <a
-                  href="#"
+                  href="/offer/19"
                 >
                   <img
                     alt="Place image"

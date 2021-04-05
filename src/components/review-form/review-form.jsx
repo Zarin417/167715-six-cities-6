@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {Fragment, useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import {useDispatch, useSelector} from "react-redux";
 import {sendPlaceReview} from "../../store/api-actions";
@@ -14,13 +14,20 @@ const ReviewForm = ({placeId}) => {
     comment: ``
   });
   const [isDisabled, setIsDisabled] = useState(false);
+  const [isBtnDisabled, setIsBtnDisabled] = useState(true);
   const {placeReviews} = useSelector((state) => state.REVIEW);
   const dispatch = useDispatch();
 
+  useEffect(() => {
+    if ((commentForm.comment.length > MIN_SYMBOLS_AMOUNT) && commentForm.rating) {
+      setIsBtnDisabled(false);
+    }
+  }, [commentForm]);
+
   const handleFormSubmit = (evt) => {
     evt.preventDefault();
-
     setIsDisabled(true);
+    setIsBtnDisabled(true);
 
     dispatch(sendPlaceReview(placeId, commentForm))
       .then(() => {
@@ -96,7 +103,7 @@ const ReviewForm = ({placeId}) => {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled={!((commentForm.comment.length > MIN_SYMBOLS_AMOUNT) && commentForm.rating)}
+          disabled={isBtnDisabled}
         >Submit</button>
       </div>
     </form>

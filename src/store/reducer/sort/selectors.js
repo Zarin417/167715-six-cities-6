@@ -16,11 +16,11 @@ export const getSortedPlaces = createSelector(
           sortOffersByRating(sortedList);
           break;
 
-        case SortType.PRICE_HIGHT_TO_LOW:
+        case SortType.PRICE_HIGH_TO_LOW:
           sortOffersHighToLowPrice(sortedList);
           break;
 
-        case SortType.PRICE_LOW_TO_HIGHT:
+        case SortType.PRICE_LOW_TO_HIGH:
           sortOffersLowToHighPrice(sortedList);
           break;
 

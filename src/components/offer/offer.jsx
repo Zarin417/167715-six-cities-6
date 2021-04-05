@@ -67,7 +67,7 @@ const Offer = ({place, cardName, onMouseEnter, onMouseLeave}) => {
     >
       {isPremium && addPremiumMark()}
       <div className={`${cardName}__image-wrapper place-card__image-wrapper`}>
-        <a href="#">
+        <Link to={`/offer/${place.id}`}>
           <img
             className="place-card__image"
             src={previewImage}
@@ -75,7 +75,7 @@ const Offer = ({place, cardName, onMouseEnter, onMouseLeave}) => {
             height={CardSettings[cardName].imgSize.height}
             alt="Place image"
           />
-        </a>
+        </Link>
       </div>
       <div className={`${CardSettings[cardName].cardInfoClass} place-card__info`}>
         <div className="place-card__price-wrapper">

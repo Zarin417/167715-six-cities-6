@@ -19,16 +19,6 @@ export const formatString = (string) => {
   return strings.map((it) => firstCharToUppercase(it)).join(` `);
 };
 
-export const formatReviewDate = (date) => {
-  const reviewDate = new Date(date);
-
-  return reviewDate.toLocaleDateString(`en-US`, {year: `numeric`, month: `long`});
-};
-
-export const formatReviewDateTime = (date) => {
-  return new Date(date).toLocaleDateString(`en-US`);
-};
-
 export const getCityPlaces = (places, city) => {
   return places.filter((place) => place.city.name === city);
 };

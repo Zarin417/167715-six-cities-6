@@ -46,14 +46,14 @@ exports[`Test 'Map' Map should render correctly 1`] = `
           alt=""
           class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
           src="img/pin.svg"
-          style="margin-left: -15px; margin-top: -15px; width: 30px; height: 30px; left: 81px; top: 105px; z-index: 105;"
+          style="margin-left: -13.5px; margin-top: -19.5px; width: 27px; height: 39px; left: 81px; top: 105px; z-index: 105;"
           tabindex="0"
         />
         <img
           alt=""
           class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
           src="img/pin-active.svg"
-          style="margin-left: -15px; margin-top: -15px; width: 30px; height: 30px; left: 81px; top: 105px; z-index: 105;"
+          style="margin-left: -13.5px; margin-top: -19.5px; width: 27px; height: 39px; left: 81px; top: 105px; z-index: 105;"
           tabindex="0"
         />
       </div>
